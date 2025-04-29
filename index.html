@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast</title>
+  <meta name="description" content="Real-time weather forecast application">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarSupportedContent">
+  <!-- Main Weather App Container -->
+  <div class="d-flex flex-column min-vh-100 bg-dark-nav">
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-transparent py-3 py-lg-4">
+      <div class="container">
+        <!-- Logo & Brand -->
+        <div class="d-flex align-items-center">
+          <img src="./Image/weather1.png" class="img-fluid me-2" width="40" alt="Weather App Logo">
+          <a class="navbar-brand text-white fs-3 fw-bolder" href="index.html">Weather</a>
+        </div>
+        
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active px-3" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#">Live cameras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#">Photos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- Main Content Section -->
+    <main class="flex-grow-1">
+      <!-- Search Section -->
+      <section class="weather-search py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+              <div class="input-group">
+                <input id="searchId" type="text" 
+                       class="form-control border rounded-pill bg-dark-nav border-secondary text-light py-2" 
+                       placeholder="Search for a city..." 
+                       aria-label="City search" 
+                       aria-describedby="weather-search-btn">
+                <button class="btn btn-info rounded-pill text-white px-4" 
+                        type="button" id="weather-search-btn">
+                  <i class="fas fa-search me-2"></i>Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Weather Cards Section -->
+      <section class="weather-cards py-3 py-lg-4">
+        <div class="container">
+          <div class="row g-3">
+            <!-- Today's Weather Card -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card bg-dark-card h-100 border-0 rounded-4">
+                <div class="card-body p-4">
+                  <div class="d-flex justify-content-between mb-3">
+                    <small id="dateIdToDay" class="text-light fw-semibold"></small>
+                    <small id="dateIdMonth" class="text-light fw-semibold"></small>
+                  </div>
+                  <hr class="border-secondary my-2">
+                  
+                  <h2 id="locationId" class="fs-3 fw-light mb-4">Cairo</h2>
+                  
+                  <div class="weather-today text-center">
+                    <div class="d-flex justify-content-around align-items-center mb-3">
+                      <h2 class="display-3 fw-semibold mb-0">
+                        <span id="tempId">21</span><sup>°C</sup>
+                      </h2>
+                      <img id="iconImgId" src="./Image/weather3.png" class="img-fluid" width="80" alt="Weather icon">
+                    </div>
+                    <p id="weatherStatusId" class="text-primary fs-5 mb-4">Partly Cloudy</p>
+                  </div>
+                  
+                  <div class="weather-details d-flex flex-wrap gap-3">
+                    <div class="text-light">
+                      <i class="fas fa-umbrella text-secondary me-2"></i>
+                      <span id="humindityId">--%</span>
+                    </div>
+                    <div class="text-light">
+                      <i class="fas fa-wind text-secondary me-2"></i>
+                      <span id="windKphId">-- km/h</span>
+                    </div>
+                    <div class="text-light">
+                      <i class="fas fa-location-arrow text-secondary me-2"></i>
+                      <span id="windDirId">--</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tomorrow's Weather Card -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card bg-dark-card h-100 border-0 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <small id="dateIdTomorrow" class="text-light fw-semibold"></small>
+                  <hr class="border-secondary my-2">
+                  
+                  <div class="weather-forecast">
+                    <img id="iconImgNextId" src="./Image/weather8.png" class="img-fluid my-3" width="60" alt="Weather icon">
+                    <h3 class="fw-bold">
+                      <span id="maxTempNextId">21.2</span><sup>°C</sup>
+                    </h3>
+                    <p class="text-secondary fs-5">
+                      <span id="minTempNextId">--</span><sup>°</sup>
+                    </p>
+                    <p id="statusWNextId" class="text-primary">Sunny</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Day After Tomorrow's Weather Card -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card bg-dark-card h-100 border-0 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <small id="dateIdAfterTomorrow" class="text-light fw-semibold"></small>
+                  <hr class="border-secondary my-2">
+                  
+                  <div class="weather-forecast">
+                    <img id="iconImgAfterNextId" src="./Image/weather8.png" class="img-fluid my-3" width="60" alt="Weather icon">
+                    <h3 class="fw-bold">
+                      <span id="maxTempAfterNextId">22.2</span><sup>°C</sup>
+                    </h3>
+                    <p class="text-secondary fs-5">
+                      <span id="minTempAfterNextId">--</span><sup>°</sup>
+                    </p>
+                    <p id="statusWAfterNextId" class="text-primary">Sunny</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer class="bg-dark py-4 mt-auto">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8 mb-3 mb-md-0">
+            <div class="input-group">
+              <input type="email" class="form-control border rounded-pill bg-dark-nav border-secondary text-light" 
+                     placeholder="Enter your email to subscribe" required>
+              <button class="btn btn-info rounded-pill text-white px-4" type="submit">
+                Subscribe
+              </button>
+            </div>
+            <div class="text-white-50 fw-light mt-2 small">
+              &copy; <span id="currentYear"></span> Weather App. All rights reserved.
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center justify-content-md-end gap-3">
+              <a href="#" class="text-info fs-5" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-info fs-5" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-info fs-5" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-info fs-5" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/index.js"></script>
+  <script>
+    // Update copyright year automatically
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Weather App</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarSupportedContent">
+  <!-- Main Content Section -->
+  <div class="d-flex flex-column min-vh-100 bg-dark-nav">
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-transparent py-3 py-lg-4">
+      <div class="container">
+        <!-- Logo Section -->
+        <div class="d-flex align-items-center logo">
+          <img src="./Image/weather1.png" class="img-fluid me-2" width="40" alt="Weather Logo">
+          <a class="navbar-brand text-white fs-3 fw-bolder" href="index.html">Weather</a>
+        </div>
+        
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-white"></span>
+        </button>
+        
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link px-3" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#">Live cameras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#">Photos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active px-3" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  
+  
+    <!-- Contact Content Section -->
+    <main class="flex-grow-1 py-4">
+      <div class="container my-3 my-lg-4">
+        <div class="row g-4">
+          <!-- Contact Information Column -->
+          <div class="col-lg-6">
+            <div class="card bg-transparent border-0 h-100">
+              <div class="card-body p-3 p-lg-4">
+                <div class="d-flex flex-column gap-4">
+                  <!-- Address Section -->
+                  <div class="d-flex align-items-start gap-3 text-light">
+                    <i class="fa-solid fa-location-dot mt-1 fs-5"></i>
+                    <div>
+                      <h5 class="mb-1 fs-5">Weather App Inc.</h5>
+                      <p class="mb-0 fw-lighter">123 Weather Street, Cloud City</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Contact Details -->
+                  <div class="d-flex flex-wrap gap-4">
+                    <div class="d-flex align-items-center gap-2 text-light">
+                      <i class="fa-solid fa-phone fs-5"></i>
+                      <span>+1 800 123 4567</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-light">
+                      <i class="fa-solid fa-envelope fs-5"></i>
+                      <span>contact@weatherapp.com</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Map Placeholder -->
+                  <div class="ratio ratio-16x9 bg-secondary bg-opacity-10 rounded-4 mt-3">
+                    <div class="d-flex justify-content-center align-items-center h-100 text-light">
+                      <i class="fa-solid fa-map-location-dot fa-3x opacity-25"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Contact Form Column -->
+          <div class="col-lg-6">
+            <div class="card bg-transparent border-0 h-100">
+              <div class="card-body p-3 p-lg-4">
+                <h2 class="text-white mb-3 fs-2">Get In Touch</h2>
+                <p class="text-secondary mb-4">
+                  Have questions about our weather services? Fill out the form below and our team will get back to you as soon as possible.
+                </p>
+                
+                <!-- Contact Form -->
+                <form class="row g-3 needs-validation" novalidate>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control rounded-pill bg-dark-nav border-secondary text-light py-2" 
+                           placeholder="Your name" required>
+                    <div class="invalid-feedback">
+                      Please provide your name.
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" class="form-control rounded-pill bg-dark-nav border-secondary text-light py-2" 
+                           placeholder="Email address" required>
+                    <div class="invalid-feedback">
+                      Please provide a valid email.
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control rounded-pill bg-dark-nav border-secondary text-light py-2" 
+                           placeholder="Subject">
+                  </div>
+                  <div class="col-md-6">
+                    <select class="form-select rounded-pill bg-dark-nav border-secondary text-light py-2">
+                      <option selected disabled>Inquiry Type</option>
+                      <option>General Question</option>
+                      <option>Technical Support</option>
+                      <option>Business Inquiry</option>
+                      <option>Feedback</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <textarea class="form-control rounded-4 bg-dark-nav border-secondary text-light" 
+                              rows="5" placeholder="Your message" required></textarea>
+                    <div class="invalid-feedback">
+                      Please enter your message.
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary rounded-pill px-4 py-2 mt-2">
+                      <i class="fa-solid fa-paper-plane me-2"></i> Send Message
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer class="bg-dark py-4 mt-auto">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8 mb-3 mb-md-0">
+            <div class="input-group">
+              <input type="email" class="form-control border rounded-pill bg-dark-nav border-black text-light" 
+                     placeholder="Enter your Email to subscribe" required>
+              <button class="btn btn-info rounded-pill text-white px-3 px-lg-4" type="submit">
+                Subscribe
+              </button>
+            </div>
+            <div class="text-white-50 fw-light mt-2 small">
+              &copy; 2023 Weather App. All rights reserved.
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center justify-content-md-end gap-3">
+              <a href="#" class="text-info fs-5"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-info fs-5"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-info fs-5"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-info fs-5"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Form validation script
+    (function() {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>
+
+</html>
