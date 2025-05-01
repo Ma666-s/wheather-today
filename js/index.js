@@ -1,6 +1,6 @@
 // Constants
 const API_KEY = 'f6bf9e4774974e62934134851241312';
-const API_BASE_URL = 'http://api.weatherapi.com/v1/forecast.json';
+const API_BASE_URL = 'https://api.weatherapi.com/v1/forecast.json'; // Changed to https
 const DEFAULT_CITY = 'Cairo';
 const PATH_PREFIX = 'https:';
 
@@ -35,7 +35,9 @@ const elements = {
       icon: document.getElementById('iconImgAfterNextId'),
       status: document.getElementById('statusWAfterNextId')
     }
-  }
+  },
+  loadingSpinner: document.getElementById('loadingSpinner'),
+  errorMessage: document.getElementById('errorMessage')
 };
 
 // Initialize Date Display
@@ -58,18 +60,23 @@ function initializeDates() {
 // API Functions
 async function fetchWeatherData(cityName) {
   try {
+    showLoading(true);
     const response = await fetch(
-      `${API_BASE_URL}?key=${API_KEY}&q=${cityName}&days=3&aqi=yes&alerts=yes`
+      `${API_BASE_URL}?key=${API_KEY}&q=${encodeURIComponent(cityName)}&days=3&aqi=yes&alerts=yes`
     );
     
     if (!response.ok) {
       throw new Error(`Weather API request failed with status ${response.status}`);
     }
     
-    return await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error('Error fetching weather data:', error);
+    showError('Failed to fetch weather data. Please try again.');
     throw error;
+  } finally {
+    showLoading(false);
   }
 }
 
@@ -102,24 +109,48 @@ function displayForecast(data) {
   elements.forecast.afterNextDay.status.textContent = afterTomorrowForecast.day.condition.text;
 }
 
+// UI Helpers
+function showLoading(show) {
+  if (elements.loadingSpinner) {
+    elements.loadingSpinner.style.display = show ? 'block' : 'none';
+  }
+}
+
+function showError(message) {
+  if (elements.errorMessage) {
+    elements.errorMessage.textContent = message;
+    elements.errorMessage.style.display = 'block';
+    setTimeout(() => {
+      elements.errorMessage.style.display = 'none';
+    }, 5000);
+  }
+}
+
 // Main Function
 async function updateWeather(cityName = DEFAULT_CITY) {
   try {
     const weatherData = await fetchWeatherData(cityName);
-    displayCurrentWeather(weatherData);
-    displayForecast(weatherData);
+    if (weatherData) {
+      displayCurrentWeather(weatherData);
+      displayForecast(weatherData);
+    }
   } catch (error) {
     console.error('Error updating weather:', error);
-    // You might want to display an error message to the user here
   }
 }
 
 // Event Listeners
 function setupEventListeners() {
+  let searchTimeout;
+  
   elements.search.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
     const searchValue = e.target.value.trim();
-    if (searchValue) {
-      updateWeather(searchValue);
+    
+    if (searchValue.length > 2) { // Only search if input has at least 3 characters
+      searchTimeout = setTimeout(() => {
+        updateWeather(searchValue);
+      }, 500); // Add slight delay to reduce API calls
     }
   });
 }
@@ -131,5 +162,5 @@ function init() {
   updateWeather();
 }
 
-// Start the application
-init();
+// Start the application when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', init);

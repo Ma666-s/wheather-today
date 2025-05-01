@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Forecast</title>
   <meta name="description" content="Real-time weather forecast application">
-   <!-- Favicon -->
+  <!-- Favicon -->
   <link rel="icon" href="./Image/weather1.png" type="image/x-icon">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
@@ -16,7 +16,7 @@
 <body data-bs-spy="scroll" data-bs-target="#navbarSupportedContent">
   <!-- Main Weather App Container -->
   <div class="d-flex flex-column min-vh-100 bg-dark-nav">
-    
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-transparent py-3 py-lg-4">
       <div class="container">
@@ -25,14 +25,14 @@
           <img src="./Image/weather1.png" class="img-fluid me-2" width="40" alt="Weather App Logo">
           <a class="navbar-brand text-white fs-3 fw-bolder" href="index.html">Weather</a>
         </div>
-        
+
         <!-- Mobile Toggle Button -->
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <!-- Navigation Menu -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -55,7 +55,13 @@
         </div>
       </div>
     </nav>
-  
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+
     <!-- Main Content Section -->
     <main class="flex-grow-1">
       <!-- Search Section -->
@@ -64,13 +70,10 @@
           <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
               <div class="input-group">
-                <input id="searchId" type="text" 
-                       class="form-control border rounded-pill bg-dark-nav border-secondary text-light py-2" 
-                       placeholder="Search for a city..." 
-                       aria-label="City search" 
-                       aria-describedby="weather-search-btn">
-                <button class="btn btn-info rounded-pill text-white px-4" 
-                        type="button" id="weather-search-btn">
+                <input id="searchId" type="text"
+                  class="form-control border rounded-pill bg-dark-nav border-secondary text-light py-2"
+                  placeholder="Search for a city..." aria-label="City search" aria-describedby="weather-search-btn">
+                <button class="btn btn-info rounded-pill text-white px-4" type="button" id="weather-search-btn">
                   <i class="fas fa-search me-2"></i>Search
                 </button>
               </div>
@@ -78,7 +81,7 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Weather Cards Section -->
       <section class="weather-cards py-3 py-lg-4">
         <div class="container">
@@ -92,9 +95,9 @@
                     <small id="dateIdMonth" class="text-light fw-semibold"></small>
                   </div>
                   <hr class="border-secondary my-2">
-                  
+
                   <h2 id="locationId" class="fs-3 fw-light mb-4">Cairo</h2>
-                  
+
                   <div class="weather-today text-center">
                     <div class="d-flex justify-content-around align-items-center mb-3">
                       <h2 class="display-3 fw-semibold mb-0">
@@ -104,7 +107,7 @@
                     </div>
                     <p id="weatherStatusId" class="text-primary fs-5 mb-4">Partly Cloudy</p>
                   </div>
-                  
+
                   <div class="weather-details d-flex flex-wrap gap-3">
                     <div class="text-light">
                       <i class="fas fa-umbrella text-secondary me-2"></i>
@@ -122,16 +125,17 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Tomorrow's Weather Card -->
             <div class="col-md-6 col-lg-4">
               <div class="card bg-dark-card h-100 border-0 rounded-4">
                 <div class="card-body p-4 text-center">
                   <small id="dateIdTomorrow" class="text-light fw-semibold"></small>
                   <hr class="border-secondary my-2">
-                  
+
                   <div class="weather-forecast">
-                    <img id="iconImgNextId" src="./Image/weather8.png" class="img-fluid my-3" width="60" alt="Weather icon">
+                    <img id="iconImgNextId" src="./Image/weather8.png" class="img-fluid my-3" width="60"
+                      alt="Weather icon">
                     <h3 class="fw-bold">
                       <span id="maxTempNextId">21.2</span><sup>°C</sup>
                     </h3>
@@ -143,16 +147,17 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Day After Tomorrow's Weather Card -->
             <div class="col-md-6 col-lg-4">
               <div class="card bg-dark-card h-100 border-0 rounded-4">
                 <div class="card-body p-4 text-center">
                   <small id="dateIdAfterTomorrow" class="text-light fw-semibold"></small>
                   <hr class="border-secondary my-2">
-                  
+
                   <div class="weather-forecast">
-                    <img id="iconImgAfterNextId" src="./Image/weather8.png" class="img-fluid my-3" width="60" alt="Weather icon">
+                    <img id="iconImgAfterNextId" src="./Image/weather8.png" class="img-fluid my-3" width="60"
+                      alt="Weather icon">
                     <h3 class="fw-bold">
                       <span id="maxTempAfterNextId">22.2</span><sup>°C</sup>
                     </h3>
@@ -168,15 +173,15 @@
         </div>
       </section>
     </main>
-    
+
     <!-- Footer Section -->
     <footer class="bg-dark py-4 mt-auto">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-8 mb-3 mb-md-0">
             <div class="input-group">
-              <input type="email" class="form-control border rounded-pill bg-dark-nav border-secondary text-light" 
-                     placeholder="Enter your email to subscribe" required>
+              <input type="email" class="form-control border rounded-pill bg-dark-nav border-secondary text-light"
+                placeholder="Enter your email to subscribe" required>
               <button class="btn btn-info rounded-pill text-white px-4" type="submit">
                 Subscribe
               </button>
